@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url';
 import { FlatCompat } from '@eslint/eslintrc';
 import eslintPluginReact from 'eslint-plugin-react';
 import eslintPluginImport from 'eslint-plugin-import';
-import daStyle from 'eslint-config-dicodingacademy'; // ✅ imported here
+import daStyle from 'eslint-config-dicodingacademy';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
