@@ -1,6 +1,9 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { FlatCompat } from '@eslint/eslintrc';
+import eslintPluginReact from 'eslint-plugin-react';
+import eslintPluginImport from 'eslint-plugin-import';
+import daStyle from 'eslint-config-dicodingacademy'; // ✅ imported here
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -10,7 +13,36 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    ignores: ['.next/**', 'dist/**'],
+  },
+
+  // ✅ Include Next.js and TypeScript recommendations
+  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+
+  // ✅ Add daStyle config manually
+  ...(Array.isArray(daStyle) ? daStyle : [daStyle]),
+
+  // ✅ Your own custom override
+  {
+    files: ['**/*.{js,jsx,ts,tsx}'],
+    plugins: {
+      react: eslintPluginReact,
+      import: eslintPluginImport,
+    },
+    rules: {
+      'no-console': 'warn',
+      'react/jsx-uses-react': 'off',
+      'linebreak-style': 'off',
+      'no-alert': 'off',
+      'no-underscore-dangle': 'off',
+      'import/prefer-default-export': 'off',
+      'react/jsx-props-no-spreading': 'off',
+    },
+    languageOptions: {
+      ecmaVersion: 2022,
+    },
+  },
 ];
 
 export default eslintConfig;
