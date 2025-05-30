@@ -2,6 +2,7 @@
 
 import { Provider } from 'react-redux';
 import store from '@/states/index';
+
 import Loading from '@/components/Loading';
 
 export default function StoreProvider({
@@ -9,6 +10,7 @@ export default function StoreProvider({
 }: {
   children: React.ReactNode;
 }) {
+  console.log(store);
   return (
     <Provider store={store}>
       <Loading />

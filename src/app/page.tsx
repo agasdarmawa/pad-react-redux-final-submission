@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 
 import ThreadsList from '@/components/thread/ThreadList';
 import Image from 'next/image';
