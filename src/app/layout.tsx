@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import StoreProvider from '@/components/StoreProvider';
+import { LoadingBarProvider } from '@/contexts/LoadingBarContext';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -21,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <StoreProvider>{children}</StoreProvider>
+        <StoreProvider>
+          <LoadingBarProvider>{children}</LoadingBarProvider>
+        </StoreProvider>
       </body>
     </html>
   );

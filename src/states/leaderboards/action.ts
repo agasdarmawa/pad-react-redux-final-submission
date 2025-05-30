@@ -2,6 +2,10 @@ import { Dispatch } from '@reduxjs/toolkit';
 import api from '@/utils/api';
 import { Leaderboard } from '@/types/leaderboard';
 // import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import {
+  startLoadingBar,
+  completeLoadingBar,
+} from '@/utils/loading-bar-control';
 
 const ActionType = {
   SET_LEADERBOARDS: 'SET_LEADERBOARDS',
@@ -19,6 +23,7 @@ function setLeaderboardsActionCreator(leaderboards: Leaderboard[]) {
 function asyncGetLeaderboards() {
   return async (dispatch: Dispatch) => {
     // dispatch(showLoading());
+    startLoadingBar();
     try {
       const leaderboards = await api.getLeaderboards();
       dispatch(setLeaderboardsActionCreator(leaderboards));
@@ -26,6 +31,7 @@ function asyncGetLeaderboards() {
       console.log(error);
     } finally {
       // dispatch(hideLoading());
+      completeLoadingBar();
     }
   };
 }

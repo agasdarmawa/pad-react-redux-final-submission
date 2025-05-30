@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authUserReducer from './authUser/reducer';
-import { loadingBarReducer } from 'react-redux-loading-bar';
 import isPreloadReducer from './isPreload/reducer';
 import usersReducer from './users/reducer';
 import threadReducer from './threads/reducer';
@@ -12,7 +11,6 @@ const store = configureStore({
     isPreload: isPreloadReducer,
     users: usersReducer,
     threadData: threadReducer,
-    loadingBar: loadingBarReducer,
     leaderboards: leaderboardsReducer,
   },
 });
