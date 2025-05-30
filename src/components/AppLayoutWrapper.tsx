@@ -21,7 +21,7 @@ export default function AppLayoutWrapper({
   const isPreload = useAppSelector((state) => state.isPreload);
 
   const authPages = ['/login', '/register'];
-  const protectedAppRoutes = ['/threads', '/leaderboards'];
+  const protectedAppRoutes = ['/', '/threads', '/leaderboards'];
 
   const isAuthPage = authPages.includes(pathname);
   const isProtectedAppPage = protectedAppRoutes.some((route) =>

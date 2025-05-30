@@ -3,6 +3,15 @@ import authUserReducer from './reducer';
 import { ActionType } from './action';
 import { User } from '@/types/user';
 
+/**
+ * test scenario for authUserReducer
+ *
+ * - authUserReducer function
+ *   - should return the authUser when receiving SET_AUTH_USER action
+ *   - should return null when receiving UNSET_AUTH_USER action
+ *   - should return the current state when receiving unknown action
+ */
+
 describe('authUserReducer function', () => {
   const fakeUser: User = {
     id: 'user-1',

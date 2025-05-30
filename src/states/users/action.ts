@@ -23,7 +23,7 @@ function asyncRegisterUser({ name, email, password }: Register) {
 
       return response;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       throw error;
     }
   };
@@ -36,7 +36,7 @@ function asyncPopulateUsers() {
 
       dispatch(receiveUsersActionCreator(users));
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 }
@@ -48,8 +48,8 @@ function asyncGetUserById(id: string) {
 
       return user;
     } catch (error) {
-      // alert(error.message);
-      console.log(error);
+      // console.error('Failed to fetch user by ID:', error);
+      return undefined;
     }
   };
 }

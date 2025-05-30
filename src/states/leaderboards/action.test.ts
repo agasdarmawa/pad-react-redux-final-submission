@@ -5,7 +5,7 @@ import { Leaderboard } from '@/types/leaderboard';
 import * as loadingBar from '@/utils/loading-bar-control';
 
 /**
- * skenario test
+ * test scenarios for leaderboard actions
  *
  * - asyncGetLeaderboards thunk
  *  - should dispatch setLeaderboardsActionCreator and call loading bar functions when data fetching succeeds

@@ -11,7 +11,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'React Redux Submission',
+  title: {
+    template: 'React Redux Submission | %s',
+    default: 'React Redux Submission',
+  },
   description: 'React Redux Submission by Dicoding',
 };
 

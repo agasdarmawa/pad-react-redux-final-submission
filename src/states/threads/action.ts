@@ -174,8 +174,8 @@ function asyncCreateThread({ title, category, body }: ThreadFormType) {
     try {
       const thread = await api.createThread({ title, category, body });
       dispatch(setThreadActionCreator(thread));
-    } catch (error) {
-      console.log(error);
+    } catch {
+      // console.log(error);
     } finally {
       completeLoadingBar();
     }
@@ -184,13 +184,12 @@ function asyncCreateThread({ title, category, body }: ThreadFormType) {
 
 function asyncGetThreadsList() {
   return async (dispatch: Dispatch) => {
+    startLoadingBar();
     try {
       const threads = await api.getThreadsWithOwnerProfiles();
-      startLoadingBar();
 
       dispatch(setThreadsListActionCreator(threads));
-    } catch (error) {
-      console.log(error);
+    } catch {
     } finally {
       completeLoadingBar();
     }
@@ -206,8 +205,7 @@ function asyncUpvoteThread({ threadId }: { threadId: string }) {
     try {
       await api.upvoteSelectedThread({ threadId });
       dispatch(upvoteThreadActionCreator(userId, threadId));
-    } catch (error) {
-      console.error(error);
+    } catch {
     } finally {
       completeLoadingBar();
     }
@@ -223,8 +221,7 @@ function asyncDownvoteThread({ threadId }: { threadId: string }) {
     try {
       await api.downVoteSelectedThread({ threadId });
       dispatch(downvoteThreadActionCreator(userId, threadId));
-    } catch (error) {
-      console.error(error);
+    } catch {
     } finally {
       completeLoadingBar();
     }
@@ -240,8 +237,7 @@ function asyncNeutralVoteThread({ threadId }: { threadId: string }) {
     try {
       await api.neutralizeVoteSelectedThread({ threadId });
       dispatch(neutralVoteThreadActionCreator(userId, threadId));
-    } catch (error) {
-      console.error(error);
+    } catch {
     } finally {
       completeLoadingBar();
     }
@@ -264,8 +260,7 @@ function asyncUpvoteCommentThread({
       await api.upvoteCommentThread({ threadId, commentId });
 
       dispatch(upvoteCommentThreadActionCreator(userId, commentId));
-    } catch (error) {
-      console.error(error);
+    } catch {
     } finally {
       completeLoadingBar();
     }
@@ -288,8 +283,7 @@ function asyncDownvoteCommentThread({
       await api.downVoteCommentThread({ threadId, commentId });
 
       dispatch(downvoteCommentThreadActionCreator(userId, commentId));
-    } catch (error) {
-      console.error(error);
+    } catch {
     } finally {
       completeLoadingBar();
     }
@@ -312,8 +306,7 @@ function asyncNeutralCommentThread({
       await api.neutralizeVoteCommentThread({ threadId, commentId });
 
       dispatch(neutralVoteCommentThreadActionCreator(userId, commentId));
-    } catch (error) {
-      console.error(error);
+    } catch {
     } finally {
       completeLoadingBar();
     }
@@ -327,8 +320,7 @@ function asyncGetDetailThread(threadId: string) {
       const detailThread = await api.getThreadDetail(threadId);
       dispatch(setDetailThreadActionCreator(detailThread));
       return detailThread;
-    } catch (error) {
-      console.log(error);
+    } catch {
     } finally {
       completeLoadingBar();
     }
@@ -348,8 +340,7 @@ function asyncCreateThreadReply({
       const newComment = await api.createThreadReply({ threadId, content });
 
       dispatch(addThreadCommentActionCreator(newComment));
-    } catch (error) {
-      console.log(error);
+    } catch {
     } finally {
       completeLoadingBar();
     }
@@ -361,9 +352,7 @@ export const asyncGetThreadsByCategory = (category: string) => {
     try {
       const threads = await api.getThreadsByCategory(category);
       dispatch(setThreadsByCategoryActionCreator(threads));
-    } catch (error) {
-      console.error(error);
-    }
+    } catch {}
   };
 };
 
@@ -372,9 +361,7 @@ export function asyncGetAllCategories() {
     try {
       const categories = await api.getAllCategoryThreads();
       dispatch(setAllCategoriesActionCreator(categories));
-    } catch (error) {
-      console.error('Failed to fetch categories:', error);
-    }
+    } catch {}
   };
 }
 
@@ -395,7 +382,11 @@ export {
   neutralVoteThreadActionCreator,
   asyncCreateThreadReply,
   neutralVoteCommentThreadActionCreator,
+  upvoteCommentThreadActionCreator,
   unsetDetailThreadActionCreator,
+  addThreadCommentActionCreator,
+  downvoteCommentThreadActionCreator,
+  setDetailThreadActionCreator,
   unsetThreadsListActionCreator,
   setThreadsByCategoryActionCreator,
   clearThreadsByCategoryActionCreator,

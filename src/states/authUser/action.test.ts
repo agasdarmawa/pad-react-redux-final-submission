@@ -7,6 +7,20 @@ import {
 import api from '@/utils/api';
 import { User } from '@/types/user';
 
+/**
+ * test scenario for auth actions
+ *
+ * - asyncSetAuthUser
+ *   - should dispatch setAuthUserActionCreator with user after login success
+ *   - should throw error and not dispatch if login fails
+ *
+ * - asyncUnsetAuthUser
+ *   - should dispatch unsetAuthUserActionCreator and clear token
+ *
+ * - getAuthTokenUser
+ *   - should dispatch setAuthTokenUserActionCreator with token
+ */
+
 describe('asyncSetAuthUser function', () => {
   const fakeUser: User = {
     id: 'user-1',
