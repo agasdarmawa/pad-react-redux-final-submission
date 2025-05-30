@@ -1,5 +1,6 @@
 import { Leaderboard } from '@/types/leaderboard';
 import LeaderboardsContentWrapper from './LeaderboardsContentWrapper';
+import Image from 'next/image';
 
 interface Props {
   leaderboards: Leaderboard[];
@@ -15,10 +16,11 @@ const LeaderboardList = ({ leaderboards }: Props) => {
               <h1 className="font-bold text-center">#{idx + 1}</h1>
             </div>
             <div className="flex items-center ml-5">
-              <img
+              <Image
                 src={leaderboard.user.avatar}
                 className="mr-2 rounded-full w-10 h-10 "
-                alt=""
+                alt={leaderboard.user.name}
+                unoptimized
               />
               <h2>{leaderboard.user.name}</h2>
             </div>

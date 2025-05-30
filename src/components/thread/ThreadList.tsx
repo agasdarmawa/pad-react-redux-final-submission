@@ -10,7 +10,10 @@ import ThreadCardWrapper from './ThreadCardWrapper';
 import { Thread } from '@/types/thread';
 import { useAppDispatch, useAppSelector } from '@/states/hooks';
 import { Button } from '@/components/ui/button';
-// import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import {
+  completeLoadingBar,
+  startLoadingBar,
+} from '@/utils/loading-bar-control';
 
 const ThreadsList = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -27,12 +30,12 @@ const ThreadsList = () => {
 
   useEffect(() => {
     const load = async () => {
-      // dispatch(showLoading());
+      startLoadingBar();
       try {
         await dispatch(asyncGetThreadsList());
         await dispatch(asyncGetAllCategories());
       } finally {
-        // dispatch(hideLoading());
+        completeLoadingBar();
       }
     };
 

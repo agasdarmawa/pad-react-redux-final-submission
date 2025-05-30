@@ -1,15 +1,12 @@
 import { Metadata } from 'next';
+import LoginPageWrapper from './LoginPageWrapper';
 
 export const metadata: Metadata = {
-  title: 'Darkweb Monitoring',
+  title: 'Login',
 };
 
 function LoginPage() {
-  return (
-    <div>
-      <h2>Login Page</h2>
-    </div>
-  );
+  return <LoginPageWrapper />;
 }
 
 export default LoginPage;

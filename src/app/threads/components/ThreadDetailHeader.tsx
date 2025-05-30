@@ -9,8 +9,14 @@ import {
 import { DetailThread } from '@/types/thread';
 import { postedAt } from '@/utils';
 import { ReplyIcon } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
-// import { Link } from 'react-router-dom';
+import {
+  FaRegThumbsUp,
+  FaThumbsUp,
+  FaRegThumbsDown,
+  FaThumbsDown,
+} from 'react-icons/fa6';
 
 interface Props {
   thread: DetailThread;
@@ -23,6 +29,9 @@ const ThreadDetailHeader = ({ thread }: Props) => {
   const currentUserId = useAppSelector((state) => state.authUser?.id) as string;
   const isUpvoted = thread.upVotesBy.includes(currentUserId);
   const isDownvoted = thread.downVotesBy.includes(currentUserId);
+
+  const IconIsUpvoted = isUpvoted ? FaThumbsUp : FaRegThumbsUp;
+  const IconIsDownvoted = isDownvoted ? FaThumbsDown : FaRegThumbsDown;
 
   const handleUpvote = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -59,7 +68,7 @@ const ThreadDetailHeader = ({ thread }: Props) => {
           className="flex items-center cursor-pointer"
           onClick={(e) => handleUpvote(e)}
         >
-          <i className={`${isUpvoted ? 'fa' : 'far'} fa-thumbs-up mr-1`}></i>
+          <IconIsUpvoted className="w-4 h-4 mr-1" />
           <span>{thread.upVotesBy.length || 0}</span>
         </div>
 
@@ -67,9 +76,7 @@ const ThreadDetailHeader = ({ thread }: Props) => {
           className="flex items-center cursor-pointer"
           onClick={(e) => handleDownvote(e)}
         >
-          <i
-            className={`${isDownvoted ? 'fa' : 'far'} fa-thumbs-down mr-1`}
-          ></i>
+          <IconIsDownvoted className="w-4 h-4 mr-1" />
           <span>{thread.downVotesBy.length || 0}</span>
         </div>
 
@@ -80,10 +87,11 @@ const ThreadDetailHeader = ({ thread }: Props) => {
 
         <div className="flex items-center gap-2">
           <p>Dibuat oleh </p>
-          <img
+          <Image
             src={thread.owner.avatar}
             className="w-6 h-6 rounded-full"
-            alt=""
+            alt={thread.owner.name}
+            unoptimized
           />
           <strong>{thread.owner.name}</strong>
         </div>

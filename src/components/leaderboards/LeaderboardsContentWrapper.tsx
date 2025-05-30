@@ -2,15 +2,15 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import React from 'react';
 
 interface Props {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 const LeaderboardsContentWrapper = ({ children }: Props) => {
   return (
-    <section className="min-h-screen w-full flex justify-center items-center">
+    <section className="min-h-screen w-full flex justify-center items-center mb-10 mt-[-40px] ">
       <Card className="w-[800px] text-left">
         <CardHeader>
-          <h2 className="font-bold text-2xl">Klasmen Pengguna Aktif</h2>
+          <h2 className="font-bold text-2xl">Klaesmen Pengguna Aktif</h2>
         </CardHeader>
         <CardContent>
           <div className="w-full flex justify-between mb-3">

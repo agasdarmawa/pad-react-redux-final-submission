@@ -11,7 +11,12 @@ import { Thread } from '@/types/thread';
 import { postedAt, truncateText } from '@/utils';
 import { ReplyIcon } from 'lucide-react';
 import Link from 'next/link';
-// import { Link } from 'react-router-dom';
+import {
+  FaRegThumbsUp,
+  FaThumbsUp,
+  FaRegThumbsDown,
+  FaThumbsDown,
+} from 'react-icons/fa6';
 
 interface Props {
   thread: Thread;
@@ -24,6 +29,9 @@ const ThreadItemHeader = ({ thread }: Props) => {
   const currentUserId = useAppSelector((state) => state.authUser?.id) as string;
   const isUpvoted = thread.upVotesBy.includes(currentUserId);
   const isDownvoted = thread.downVotesBy.includes(currentUserId);
+
+  const IconIsUpvoted = isUpvoted ? FaThumbsUp : FaRegThumbsUp;
+  const IconIsDownvoted = isDownvoted ? FaThumbsDown : FaRegThumbsDown;
 
   const handleUpvote = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -66,7 +74,7 @@ const ThreadItemHeader = ({ thread }: Props) => {
           className="flex items-center cursor-pointer"
           onClick={(e) => handleUpvote(e)}
         >
-          <i className={`${isUpvoted ? 'fa' : 'far'} fa-thumbs-up mr-1`}></i>
+          <IconIsUpvoted className="w-4 h-4 mr-1" />
           <span>{thread.upVotesBy.length || 0}</span>
         </div>
 
@@ -74,9 +82,7 @@ const ThreadItemHeader = ({ thread }: Props) => {
           className="flex items-center cursor-pointer"
           onClick={(e) => handleDownvote(e)}
         >
-          <i
-            className={`${isDownvoted ? 'fa' : 'far'} fa-thumbs-down mr-1`}
-          ></i>
+          <IconIsDownvoted className="w-4 h-4 mr-1" />
           <span>{thread.downVotesBy.length || 0}</span>
         </div>
 

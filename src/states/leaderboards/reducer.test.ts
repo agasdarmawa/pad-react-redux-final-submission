@@ -3,6 +3,16 @@ import leaderboardsReducer from './reducer';
 import { ActionType } from './action';
 import { Leaderboard } from '@/types/leaderboard';
 
+/**
+ * test scenario for leaderboardsReducer
+ *
+ * - leaderboardsReducer function
+ *  - should return the initial state when given undefined state
+ *  - should handle SET_LEADERBOARDS action
+ *  - should return current state for unknown action
+ *
+ */
+
 describe('leaderboardsReducer function', () => {
   const mockSingleLeaderboard: Leaderboard = {
     user: {

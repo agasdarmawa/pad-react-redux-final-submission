@@ -2,6 +2,7 @@ import { defineConfig } from 'cypress';
 
 export default defineConfig({
   e2e: {
+    baseUrl: 'https://pad-react-redux-final-submission-79.vercel.app',
     setupNodeEvents(
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       on,

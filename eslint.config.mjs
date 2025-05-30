@@ -17,13 +17,10 @@ const eslintConfig = [
     ignores: ['.next/**', 'dist/**'],
   },
 
-  // ✅ Include Next.js and TypeScript recommendations
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
 
-  // ✅ Add daStyle config manually
   ...(Array.isArray(daStyle) ? daStyle : [daStyle]),
 
-  // ✅ Your own custom override
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     plugins: {

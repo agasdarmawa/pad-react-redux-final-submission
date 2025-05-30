@@ -7,7 +7,10 @@ import {
 import api from '@/utils/api';
 import { Dispatch } from '@reduxjs/toolkit';
 import { RootState } from '..';
-// import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import {
+  startLoadingBar,
+  completeLoadingBar,
+} from '@/utils/loading-bar-control';
 
 const ActionType = {
   ADD_THREAD: 'ADD_THREAD',
@@ -167,14 +170,14 @@ function unsetThreadsListActionCreator() {
 
 function asyncCreateThread({ title, category, body }: ThreadFormType) {
   return async (dispatch: Dispatch) => {
-    // dispatch(showLoading());
+    startLoadingBar();
     try {
       const thread = await api.createThread({ title, category, body });
       dispatch(setThreadActionCreator(thread));
     } catch (error) {
       console.log(error);
     } finally {
-      // dispatch(hideLoading());
+      completeLoadingBar();
     }
   };
 }
@@ -183,13 +186,13 @@ function asyncGetThreadsList() {
   return async (dispatch: Dispatch) => {
     try {
       const threads = await api.getThreadsWithOwnerProfiles();
-      // dispatch(showLoading());
+      startLoadingBar();
 
       dispatch(setThreadsListActionCreator(threads));
     } catch (error) {
       console.log(error);
     } finally {
-      // dispatch(hideLoading());
+      completeLoadingBar();
     }
   };
 }
@@ -198,7 +201,7 @@ function asyncUpvoteThread({ threadId }: { threadId: string }) {
   return async (dispatch: Dispatch, getState: () => RootState) => {
     const userId = getState().authUser?.id as string;
 
-    // dispatch(showLoading());
+    startLoadingBar();
 
     try {
       await api.upvoteSelectedThread({ threadId });
@@ -206,7 +209,7 @@ function asyncUpvoteThread({ threadId }: { threadId: string }) {
     } catch (error) {
       console.error(error);
     } finally {
-      // dispatch(hideLoading());
+      completeLoadingBar();
     }
   };
 }
@@ -215,7 +218,7 @@ function asyncDownvoteThread({ threadId }: { threadId: string }) {
   return async (dispatch: Dispatch, getState: () => RootState) => {
     const userId = getState().authUser?.id as string;
 
-    // dispatch(showLoading());
+    startLoadingBar();
 
     try {
       await api.downVoteSelectedThread({ threadId });
@@ -223,7 +226,7 @@ function asyncDownvoteThread({ threadId }: { threadId: string }) {
     } catch (error) {
       console.error(error);
     } finally {
-      // dispatch(hideLoading());
+      completeLoadingBar();
     }
   };
 }
@@ -232,7 +235,7 @@ function asyncNeutralVoteThread({ threadId }: { threadId: string }) {
   return async (dispatch: Dispatch, getState: () => RootState) => {
     const userId = getState().authUser?.id as string;
 
-    // dispatch(showLoading());
+    startLoadingBar();
 
     try {
       await api.neutralizeVoteSelectedThread({ threadId });
@@ -240,7 +243,7 @@ function asyncNeutralVoteThread({ threadId }: { threadId: string }) {
     } catch (error) {
       console.error(error);
     } finally {
-      // dispatch(hideLoading());
+      completeLoadingBar();
     }
   };
 }
@@ -255,7 +258,7 @@ function asyncUpvoteCommentThread({
   return async (dispatch: Dispatch, getState: () => RootState) => {
     const userId = getState().authUser?.id as string;
 
-    // dispatch(showLoading());
+    startLoadingBar();
 
     try {
       await api.upvoteCommentThread({ threadId, commentId });
@@ -264,7 +267,7 @@ function asyncUpvoteCommentThread({
     } catch (error) {
       console.error(error);
     } finally {
-      // dispatch(hideLoading());
+      completeLoadingBar();
     }
   };
 }
@@ -279,7 +282,7 @@ function asyncDownvoteCommentThread({
   return async (dispatch: Dispatch, getState: () => RootState) => {
     const userId = getState().authUser?.id as string;
 
-    // dispatch(showLoading());
+    startLoadingBar();
 
     try {
       await api.downVoteCommentThread({ threadId, commentId });
@@ -288,7 +291,7 @@ function asyncDownvoteCommentThread({
     } catch (error) {
       console.error(error);
     } finally {
-      // dispatch(hideLoading());
+      completeLoadingBar();
     }
   };
 }
@@ -303,7 +306,7 @@ function asyncNeutralCommentThread({
   return async (dispatch: Dispatch, getState: () => RootState) => {
     const userId = getState().authUser?.id as string;
 
-    // dispatch(showLoading());
+    startLoadingBar();
 
     try {
       await api.neutralizeVoteCommentThread({ threadId, commentId });
@@ -312,14 +315,14 @@ function asyncNeutralCommentThread({
     } catch (error) {
       console.error(error);
     } finally {
-      // dispatch(hideLoading());
+      completeLoadingBar();
     }
   };
 }
 
 function asyncGetDetailThread(threadId: string) {
   return async (dispatch: Dispatch) => {
-    // dispatch(showLoading());
+    startLoadingBar();
     try {
       const detailThread = await api.getThreadDetail(threadId);
       dispatch(setDetailThreadActionCreator(detailThread));
@@ -327,7 +330,7 @@ function asyncGetDetailThread(threadId: string) {
     } catch (error) {
       console.log(error);
     } finally {
-      // dispatch(hideLoading());
+      completeLoadingBar();
     }
   };
 }
@@ -340,7 +343,7 @@ function asyncCreateThreadReply({
   content: string;
 }) {
   return async (dispatch: Dispatch) => {
-    // dispatch(showLoading());
+    startLoadingBar();
     try {
       const newComment = await api.createThreadReply({ threadId, content });
 
@@ -348,7 +351,7 @@ function asyncCreateThreadReply({
     } catch (error) {
       console.log(error);
     } finally {
-      // dispatch(hideLoading());
+      completeLoadingBar();
     }
   };
 }
