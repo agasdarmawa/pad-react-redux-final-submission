@@ -1,6 +1,9 @@
 name: Continuous Integration
 
 on:
+  push:
+    branches:
+      - master
   pull_request:
     branches:
       - master
@@ -8,6 +11,9 @@ on:
 jobs:
   automation-test-job:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
 
     steps:
       - uses: actions/checkout@v2
