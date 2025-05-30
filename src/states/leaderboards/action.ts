@@ -25,8 +25,7 @@ function asyncGetLeaderboards() {
     try {
       const leaderboards = await api.getLeaderboards();
       dispatch(setLeaderboardsActionCreator(leaderboards));
-    } catch (error) {
-      console.log(error);
+    } catch {
     } finally {
       completeLoadingBar();
     }

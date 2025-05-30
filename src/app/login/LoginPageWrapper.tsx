@@ -19,7 +19,6 @@ const LoginPageWrapper = () => {
       alert('Login berhasil');
       router.push('/');
     } catch (error) {
-      console.error(error);
       alert(error || 'Login gagal');
     }
   };

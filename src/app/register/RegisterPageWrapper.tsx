@@ -23,7 +23,6 @@ function RegisterPageWrapper() {
         router.push('/login');
       }
     } catch (error) {
-      console.error(error);
       alert(error || 'Register failed.');
     }
   };

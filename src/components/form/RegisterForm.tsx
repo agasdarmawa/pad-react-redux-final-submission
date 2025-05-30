@@ -3,6 +3,7 @@ import { Input } from '@/components/ui/input';
 import { useInput } from '@/hooks/useInput';
 import { Register } from '@/types/auth';
 import { useState } from 'react';
+import { FaEyeSlash, FaEye } from 'react-icons/fa6';
 
 interface Props {
   onRegister: ({ name, email, password }: Register) => void;
@@ -18,6 +19,8 @@ function RegisterForm({ onRegister }: Props) {
     e.preventDefault();
     onRegister({ name, email, password });
   };
+
+  const IconPasswordToggled = isPasswordToggled ? FaEyeSlash : FaEye;
 
   return (
     <form className="register-input" onSubmit={handleSubmit}>
@@ -48,12 +51,10 @@ function RegisterForm({ onRegister }: Props) {
           />
 
           <div
-            className="absolute right-3 bottom-0 translate-y-[-5px] cursor-pointer"
+            className="absolute right-3 bottom-0 translate-y-[-10px] cursor-pointer"
             onClick={() => setIsPasswordToggled(!isPasswordToggled)}
           >
-            <i
-              className={`fa ${isPasswordToggled ? 'fa-eye' : 'fa-eye-slash'} `}
-            ></i>
+            <IconPasswordToggled className="w-4 h-4" />
           </div>
         </div>
 

@@ -4,15 +4,15 @@ import api from '@/utils/api';
 import { Dispatch } from '@reduxjs/toolkit';
 
 const ActionType = {
-  RECEIVE_USERS: 'RECEIVE_USERS'
+  RECEIVE_USERS: 'RECEIVE_USERS',
 };
 
 function receiveUsersActionCreator(users: User[]) {
   return {
     type: ActionType.RECEIVE_USERS,
     payload: {
-      users
-    }
+      users,
+    },
   };
 }
 
@@ -59,5 +59,5 @@ export {
   receiveUsersActionCreator,
   asyncRegisterUser,
   asyncGetUserById,
-  asyncPopulateUsers
+  asyncPopulateUsers,
 };
