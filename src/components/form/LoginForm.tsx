@@ -22,13 +22,18 @@ function LoginForm({ onLogin }: Props) {
   const IconPasswordToggled = isPasswordToggled ? FaEyeSlash : FaEye;
 
   return (
-    <form className="login-input" onSubmit={handleSubmit}>
+    <form
+      className="login-input"
+      id="login-form"
+      data-testid="login-form"
+      onSubmit={handleSubmit}
+    >
       <div className="grid gap-4">
         <Input
           type="text"
           value={email}
           placeholder="Email"
-          required
+          // required
           onChange={onEmailChange}
         />
 
@@ -37,13 +42,15 @@ function LoginForm({ onLogin }: Props) {
             type={isPasswordToggled ? 'text' : 'password'}
             value={password}
             placeholder="Password"
-            required
+            // required
             onChange={onPasswordChange}
           />
 
           <div
             className="absolute right-3 bottom-0 translate-y-[-10px] cursor-pointer"
             onClick={() => setIsPasswordToggled(!isPasswordToggled)}
+            aria-label="Toggle password visibility"
+            role="button"
           >
             <IconPasswordToggled className="w-4 h-4" />
           </div>

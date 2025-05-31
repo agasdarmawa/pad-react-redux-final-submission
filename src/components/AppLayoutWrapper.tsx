@@ -23,9 +23,15 @@ export default function AppLayoutWrapper({
   const authPages = ['/login', '/register'];
   const protectedAppRoutes = ['/', '/threads', '/leaderboards'];
 
-  const isAuthPage = authPages.includes(pathname);
-  const isProtectedAppPage = protectedAppRoutes.some((route) =>
-    pathname.startsWith(route)
+  const normalizedPathname =
+    pathname !== '/' && pathname.endsWith('/')
+      ? pathname.slice(0, -1)
+      : pathname;
+
+  const isAuthPage = authPages.includes(normalizedPathname);
+  const isProtectedAppPage = protectedAppRoutes.some(
+    (route) =>
+      normalizedPathname === route || normalizedPathname.startsWith(route + '/')
   );
 
   useEffect(() => {

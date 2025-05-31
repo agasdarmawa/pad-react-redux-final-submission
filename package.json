@@ -8,6 +8,7 @@
     "start": "next start",
     "test": "vitest",
     "lint": "next lint",
+    "e2e": "cypress run",
     "ci:test": "vitest --no-watch && your-e2e-test-command --base-url=https://pad-react-redux-final-submission-79.vercel.app/"
   },
   "dependencies": {
@@ -30,6 +31,9 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -37,6 +41,7 @@
     "eslint": "^9.27.0",
     "eslint-config-dicodingacademy": "^0.9.4",
     "eslint-config-next": "15.3.2",
+    "eslint-plugin-cypress": "^5.0.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react": "^7.37.5",
     "jsdom": "^26.1.0",

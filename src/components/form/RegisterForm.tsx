@@ -23,18 +23,31 @@ function RegisterForm({ onRegister }: Props) {
   const IconPasswordToggled = isPasswordToggled ? FaEyeSlash : FaEye;
 
   return (
-    <form className="register-input" onSubmit={handleSubmit}>
+    <form
+      className="register-input"
+      id="register-form"
+      data-testid="register-form"
+      onSubmit={handleSubmit}
+    >
       <div className="grid gap-4">
+        <label htmlFor="name" className="sr-only">
+          Masukkan nama
+        </label>
         <Input
           type="text"
+          id="name"
           placeholder="Masukkan nama"
           value={name}
           required
           onChange={onNameChange}
         />
 
+        <label htmlFor="email" className="sr-only">
+          Masukkan email
+        </label>
         <Input
           type="email"
+          id="email"
           placeholder="Masukkan email"
           value={email}
           required
@@ -42,9 +55,13 @@ function RegisterForm({ onRegister }: Props) {
         />
 
         <div className="relative">
+          <label htmlFor="password" className="sr-only">
+            Masukkan password
+          </label>
           <Input
             type={isPasswordToggled ? 'text' : 'password'}
             value={password}
+            id="password"
             required
             onChange={onPasswordChange}
             placeholder="Masukkan password"
@@ -53,6 +70,8 @@ function RegisterForm({ onRegister }: Props) {
           <div
             className="absolute right-3 bottom-0 translate-y-[-10px] cursor-pointer"
             onClick={() => setIsPasswordToggled(!isPasswordToggled)}
+            aria-label="Toggle password visibility"
+            role="button"
           >
             <IconPasswordToggled className="w-4 h-4" />
           </div>
