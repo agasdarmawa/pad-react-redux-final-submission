@@ -5,9 +5,9 @@ import LoadingBar, { LoadingBarRef } from 'react-top-loading-bar';
 import { setLoadingBarRef } from '@/utils/loading-bar-control';
 
 const LoadingBarContext = createContext<{
-  start: () => void;
+  start:() => void;
   complete: () => void;
-} | null>(null);
+    } | null>(null);
 
 export const useLoadingBar = () => {
   const context = useContext(LoadingBarContext);

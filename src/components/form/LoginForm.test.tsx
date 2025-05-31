@@ -15,7 +15,7 @@ import LoginForm from './LoginForm';
 
 describe('LoginForm', () => {
   afterEach(() => {
-    cleanup(); // optional but safe
+    cleanup();
   });
 
   it('should handle username typing correctly', async () => {
