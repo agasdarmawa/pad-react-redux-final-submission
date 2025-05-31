@@ -28,11 +28,8 @@ const ThreadDetailWrapper = ({ threadId }: Props) => {
     const fetchData = async () => {
       startLoadingBar();
       try {
-        // console.log(threadId);
-
         await dispatch(asyncGetDetailThread(threadId));
-      } catch (error) {
-        console.error(error);
+      } catch {
       } finally {
         completeLoadingBar();
       }

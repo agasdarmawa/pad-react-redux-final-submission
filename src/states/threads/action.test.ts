@@ -318,7 +318,6 @@ describe('asyncDownvoteThread thunk', () => {
       new Error('Network error')
     );
     const dispatch = vi.fn();
-    const getState = vi.fn(() => ({ authUser: { id: userId } })) as () => any;
 
     const startLoadingSpy = vi.spyOn(loadingBar, 'startLoadingBar');
     const completeLoadingSpy = vi.spyOn(loadingBar, 'completeLoadingBar');

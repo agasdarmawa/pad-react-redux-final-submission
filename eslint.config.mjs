@@ -21,7 +21,7 @@ const eslintConfig = [
   ...(Array.isArray(daStyle) ? daStyle : [daStyle]),
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
-    excludedFiles: ['cypress/**/*', '**/*.cy.*'],
+    ignores: ['cypress/**/*', '**/*.cy.*'],
     plugins: {
       react: eslintPluginReact,
       import: eslintPluginImport,

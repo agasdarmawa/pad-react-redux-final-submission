@@ -31,7 +31,7 @@ export default function AppLayoutWrapper({
   const isAuthPage = authPages.includes(normalizedPathname);
   const isProtectedAppPage = protectedAppRoutes.some(
     (route) =>
-      normalizedPathname === route || normalizedPathname.startsWith(route + '/')
+      normalizedPathname === route || normalizedPathname.startsWith(`${route}/`)
   );
 
   useEffect(() => {

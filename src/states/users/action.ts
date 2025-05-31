@@ -35,7 +35,7 @@ function asyncPopulateUsers() {
       const users = await api.getAllUsers();
 
       dispatch(receiveUsersActionCreator(users));
-    } catch (error) {
+    } catch {
       // console.log(error);
     }
   };
@@ -47,7 +47,7 @@ function asyncGetUserById(id: string) {
       const user = await api.getUserById(id);
 
       return user;
-    } catch (error) {
+    } catch {
       // console.error('Failed to fetch user by ID:', error);
       return undefined;
     }
