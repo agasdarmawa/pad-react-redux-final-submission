@@ -29,7 +29,7 @@ const LoginPageWrapper = () => {
         <Card className="w-[400px] text-left">
           <CardContent>
             <div className="mb-4">
-              <h2 className="font-bold text-xl mb-1">Login</h2>
+              <h2 className="font-bold text-xl mb-1">Login Akun</h2>
               <p className="text-neutral-500 text-sm">
                 Login untuk masuk ke akun anda
               </p>
