@@ -18,7 +18,9 @@ const LeaderboardList = ({ leaderboards }: Props) => {
             <div className="flex items-center ml-5">
               <Image
                 src={leaderboard.user.avatar}
-                className="mr-2 rounded-full w-10 h-10 "
+                width={0}
+                height={0}
+                className="mr-2 rounded-full w-10 h-10"
                 alt={leaderboard.user.name}
                 unoptimized
               />

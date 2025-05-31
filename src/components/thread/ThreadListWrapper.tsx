@@ -10,7 +10,7 @@ const ThreadListWrapper = () => {
         <h2 className="font-bold text-2xl">Semua Diskusi</h2>
         <Link href="/threads/create">
           <Button className="cursor-pointer bg-blue-500 hover:bg-blue-600">
-            Tambah Thread
+            Tambah Diskusi
           </Button>
         </Link>
       </div>

@@ -18,7 +18,7 @@ export default function AppLayoutWrapper({
   const router = useRouter();
 
   const authUser = useAppSelector((state) => state.authUser);
-  const isPreload = useAppSelector((state) => state.isPreload);
+  const isPreload = useAppSelector((state) => state.isPreload) || false;
 
   const authPages = ['/login', '/register'];
   const protectedAppRoutes = ['/', '/threads', '/leaderboards'];
@@ -35,6 +35,8 @@ export default function AppLayoutWrapper({
   );
 
   useEffect(() => {
+    if (isPreload) return;
+
     if (!authUser && isProtectedAppPage) {
       router.replace('/login');
     }
@@ -42,7 +44,14 @@ export default function AppLayoutWrapper({
     if (authUser && isAuthPage) {
       router.replace('/');
     }
-  }, [authUser, pathname, router, isAuthPage, isProtectedAppPage]);
+  }, [
+    authUser,
+    normalizedPathname,
+    router,
+    isAuthPage,
+    isProtectedAppPage,
+    isPreload,
+  ]);
 
   useEffect(() => {
     dispatch(asyncPreloadProcess());

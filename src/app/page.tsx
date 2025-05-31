@@ -1,9 +1,12 @@
-import ThreadListWrapper from '@/components/thread/ThreadListWrapper';
+import { Metadata } from 'next';
+import MainThreadWrapper from './MainThreadWrapper';
 
-export default function Home() {
-  return (
-    <main className="flex container py-6 px-10 justify-center items-center sm:items-start">
-      <ThreadListWrapper />
-    </main>
-  );
+export const metadata: Metadata = {
+  title: 'Forum App | Semua Diskusi',
+};
+
+function HomePage() {
+  return <MainThreadWrapper />;
 }
+
+export default HomePage;

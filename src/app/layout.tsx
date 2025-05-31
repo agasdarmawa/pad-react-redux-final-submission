@@ -12,10 +12,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    template: 'React Redux Submission | %s',
-    default: 'React Redux Submission',
+    template: 'Forum App | %s',
+    default: 'Forum App',
   },
-  description: 'React Redux Submission by Dicoding',
+  description: 'Forum App powered by Dicoding',
 };
 
 export default function RootLayout({
