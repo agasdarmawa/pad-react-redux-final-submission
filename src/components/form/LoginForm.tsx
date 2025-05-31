@@ -33,7 +33,6 @@ function LoginForm({ onLogin }: Props) {
           type="text"
           value={email}
           placeholder="Email"
-          // required
           onChange={onEmailChange}
         />
 
@@ -42,7 +41,6 @@ function LoginForm({ onLogin }: Props) {
             type={isPasswordToggled ? 'text' : 'password'}
             value={password}
             placeholder="Password"
-            // required
             onChange={onPasswordChange}
           />
 

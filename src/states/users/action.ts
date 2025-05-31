@@ -23,7 +23,6 @@ function asyncRegisterUser({ name, email, password }: Register) {
 
       return response;
     } catch (error) {
-      // console.log(error);
       throw error;
     }
   };
@@ -35,9 +34,7 @@ function asyncPopulateUsers() {
       const users = await api.getAllUsers();
 
       dispatch(receiveUsersActionCreator(users));
-    } catch {
-      // console.log(error);
-    }
+    } catch {}
   };
 }
 
@@ -48,7 +45,6 @@ function asyncGetUserById(id: string) {
 
       return user;
     } catch {
-      // console.error('Failed to fetch user by ID:', error);
       return undefined;
     }
   };

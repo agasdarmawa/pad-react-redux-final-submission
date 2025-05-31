@@ -175,7 +175,6 @@ function asyncCreateThread({ title, category, body }: ThreadFormType) {
       const thread = await api.createThread({ title, category, body });
       dispatch(setThreadActionCreator(thread));
     } catch {
-      // console.log(error);
     } finally {
       completeLoadingBar();
     }

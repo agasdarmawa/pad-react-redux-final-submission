@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import usersReducer from './reducer'; // Adjust path accordingly
+import usersReducer from './reducer';
 import { ActionType } from './action';
 import { User } from '@/types/user';
 
